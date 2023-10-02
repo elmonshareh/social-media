@@ -17,12 +17,6 @@ export class MongoService implements IMongoService {
   async savePost(post: DataBody): Promise<string> {
     let messageId = '';
     try {
-      const postObj = await this.post.findOne({ _id: post?.messageId });
-      if (postObj) {
-        this.logger.warn(`Duplicated post`);
-        messageId = '';
-        throw new HttpException('Duplicated post', HttpStatus.CONFLICT);
-      }
       const postBody: DataBody = {
         content: post?.content,
         messageId: post.messageId,
