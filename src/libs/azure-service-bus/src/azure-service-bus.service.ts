@@ -84,7 +84,7 @@ export class AzureServiceBusService implements IAzureServiceBusService {
     );
   }
 
-  async sendToMicroservice(data: DataBody, queueName: string): Promise<string> {
+ private async sendToMicroservice(data: DataBody, queueName: string): Promise<string> {
     let msg = '';
     const port =
       queueName === 'post-queue'
